@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:59:46 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/03/22 17:54:14 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/23 19:34:58 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-# include <stack>
-# include <list>
-# include <deque>
+#include <stack>
 #include <iostream>
-#include <string>
 
 template <typename T>
 class MutantStack : public std::stack<T>
 {
     public:
-        MutantStack() : std::stack<T>() {}
-        MutantStack(MutantStack const & src) : std::stack<T>(src) {}
-        virtual ~MutantStack() {}
+        MutantStack():std::stack<T>(){}
+        MutantStack(MutantStack const & instance):std::stack<T>(instance){}
+        virtual ~MutantStack(){}
+		MutantStack &operator=(const MutantStack &instance)
+		{
+			std::stack<T>::operator=(instance);
+			return (*this);
+		}
 
-        typedef typename std::deque<T>::iterator iterator;
-        iterator begin()
-        {
-            return this->c.begin();
-        }
-
-        iterator end()
-        {
-            return this->c.end();
-        }
-
+        typedef typename	std::stack<T>::container_type::iterator iterator;
+        iterator	begin()
+		{
+            return (this->c.begin());
+		}
+        iterator	end()
+		{
+            return (this->c.end());
+		}
 };
