@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:59:46 by ndesprez          #+#    #+#             */
-/*   Updated: 2024/03/22 17:54:14 by ndesprez         ###   ########.fr       */
+/*   Updated: 2024/03/23 17:51:47 by ndesprez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,28 @@
 class Span
 {
     private:
-        std::vector<int> _v;
-        unsigned int _n;
+        std::vector<int>	_span;
+        unsigned int		_size;
     public:
         Span(unsigned int n);
-        Span(const Span &copy);
+        Span(const Span &instance);
         ~Span();
-        Span &operator=(const Span &copy);
-        void addNumber(int n);
-        int shortestSpan();
-        int longestSpan();
-        void addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+        Span &operator=(const Span &instance);
+
+        class   SpanFullException: public std::exception
+        {
+            public:
+                virtual char const  *what(void) const throw();
+        };
+
+		class   SpanSizeException: public std::exception
+        {
+            public:
+                virtual char const  *what(void) const throw();
+        };
+    
+        void	addNumber(int n);
+        int		shortestSpan();
+        int		longestSpan();
+        void	addRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 };

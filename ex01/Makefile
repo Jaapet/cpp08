@@ -6,11 +6,11 @@
 #    By: ndesprez <ndesprez@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/22 16:59:31 by ndesprez          #+#    #+#              #
-#    Updated: 2024/03/22 17:08:30 by ndesprez         ###   ########.fr        #
+#    Updated: 2024/03/23 17:53:25 by ndesprez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
 
 NAME = rat
 
